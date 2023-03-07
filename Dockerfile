@@ -1,9 +1,9 @@
 FROM node:16-alpine As build
 COPY . /app
 WORKDIR /app
-RUN npm install
+RUN yarn install
 RUN npm install -g @angular/cli
-RUN ng build
+RUN yarn build
 
 FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
